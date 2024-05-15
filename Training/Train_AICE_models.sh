@@ -3,7 +3,7 @@
 #$ -l h_rt=00:20:00
 #$ -S /bin/bash
 #$ -pe shmem-1 1
-#$ -l h_rss=12G,mem_free=12G,h_data=12G
+#$ -l h_rss=12G,mem_free=12G,h_data=20G
 #$ -q gpu-r8.q
 #$ -l h=gpu-04.ppi.met.no
 ##$ -j y
