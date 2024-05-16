@@ -209,7 +209,6 @@ loss = {"SIC": tf.keras.losses.MeanSquaredError()}
 metrics = {"SIC": tf.keras.metrics.RootMeanSquaredError()}
 #
 unet_model = Att_Res_UNet(**model_params).make_unet_model()
-print(type(unet_model))
 print(unet_model.summary())
 unet_model.compile(loss = loss, metrics = metrics, optimizer = opt)
 print("Model compiled")
