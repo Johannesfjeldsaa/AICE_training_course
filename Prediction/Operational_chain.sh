@@ -3,7 +3,7 @@
 #$ -l h_rt=00:20:00
 #$ -S /bin/bash
 #$ -pe shmem-1 1
-#$ -l h_rss=4G,mem_free=4G,h_data=10G
+#$ -l h_rss=5G,mem_free=5G,h_data=5G
 #$ -q research-r8.q
 ##$ -j y
 #$ -m ba

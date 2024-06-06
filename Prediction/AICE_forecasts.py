@@ -123,6 +123,10 @@ class Data_generator(tf.keras.utils.Sequence):
             X[0,:,:,v] = self.normalize(var, var_data)
         #
         return(X)
+    #
+    def __call__(self):
+        X = self.data_generation()
+        return(X)
 
 
 # # Function make_predictions
@@ -160,7 +164,7 @@ class make_predictions:
                            "dim": self.model_params["patch_dim"],
                           }
             #
-            pred_sample = Data_generator(self.model_params["list_predictors"], leadtime, standard, self.Dataset, self.model_params["patch_dim"]).data_generation()
+            pred_sample = Data_generator(self.model_params["list_predictors"], leadtime, standard, self.Dataset, self.model_params["patch_dim"])()
             tp0 = time.time()
             predictions_SIC = np.squeeze(unet_model.predict(pred_sample))
             tp1 = time.time()
@@ -170,6 +174,10 @@ class make_predictions:
             predictions_SIC[predictions_SIC < 3] = 0
             SIC_pred[leadtime,:,:] = np.copy(predictions_SIC)
             del unet_model
+        return(SIC_pred)
+    #
+    def __call__(self):
+        SIC_pred = self.predict()
         return(SIC_pred)
 
 
@@ -212,7 +220,7 @@ print("AICE forecasts")
 Dataset = load_predictors(paths)
 t1 = time.time()
 print("Load dataset", t1 - t0)
-Dataset["SIC_pred"] = make_predictions(Dataset, model_params, filename_standardization, paths).predict()
+Dataset["SIC_pred"] = make_predictions(Dataset, model_params, filename_standardization, paths)()
 t2 = time.time()
 print("Make predictions", t2 - t1)
 write_hdf5_forecasts(Dataset)
