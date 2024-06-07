@@ -19,4 +19,7 @@ module load cuda/11.6.0
 source /modules/rhel8/conda/install/etc/profile.d/conda.sh
 conda activate /lustre/storeB/users/cyrilp/mycondaTF
 
-python3 "/lustre/storeB/users/cyrilp/ML_course_June_2024/Training/Train_AICE_models.py"
+current_path="/lustre/storeB/users/cyrilp/ML_course_June_2024/Training/"
+cd $current_path
+
+python3 $current_path"Train_AICE_models.py"

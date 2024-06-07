@@ -31,9 +31,9 @@ t0 = time.time()
 # In[6]:
 
 
-lead_time = 4 # lead time in days (0 corresponds to 1-day lead time)
+lead_time = 3 # lead time in days (0 corresponds to 1-day lead time)
 #
-current_path = "/lustre/storeB/users/cyrilp/ML_course_June_2024/Training/"
+current_path = os.getcwd() 
 sys.path.insert(0, current_path)
 from Data_generator_UNet import *
 from Attention_Res_UNet import *
@@ -46,8 +46,8 @@ date_max_valid = "20211231"
 paths = {}
 paths["data"] = "/lustre/storeB/project/copernicus/cosi/WP3/Operational/Training/"
 paths["standard"] = "/lustre/storeB/project/copernicus/cosi/WP3/Operational/Standardization/"
-paths["output"] = current_path + "Model_weights/"
-paths["checkpoints"] = current_path + "Model_weights/Checkpoints/"
+paths["output"] = current_path + "/Model_weights/"
+paths["checkpoints"] = current_path + "/Model_weights/Checkpoints/"
 #
 for var in paths:
     if os.path.isdir(paths[var]) == False:
