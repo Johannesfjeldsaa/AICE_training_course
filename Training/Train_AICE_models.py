@@ -84,7 +84,7 @@ compile_params = {"initial_learning_rate": 0.005,
                   "decay_steps": 2550,
                   "decay_rate": 0.5,
                   "staircase": True,
-                  "n_epochs": 2,
+                  "n_epochs": 100,
                   }
 #
 model_and_compile_params = {**model_params, **compile_params}
